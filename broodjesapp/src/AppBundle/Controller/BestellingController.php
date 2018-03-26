@@ -25,8 +25,10 @@ class BestellingController extends Controller
         $em = $this->getDoctrine()->getManager();
         $beleg = $em->getRepository('AppBundle:Beleg')->findAll();
         $soepvdag = $em->getRepository('AppBundle:Soep')->findBy(['id' => $today]);
+        $bestellingen = array();
         
         return $this->render('bestelling/index.html.twig', [
+            'bestellingen' => $bestellingen,
             'beleg' => $beleg,
             'soepvdag' => $soepvdag,
         ]);    
