@@ -10,6 +10,7 @@ use AppBundle\Entity\Beleg;
 use AppBundle\Service\BestellingService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 
 class BestellingController extends Controller

@@ -30,7 +30,7 @@ class Beleg
 
      /**
      * 
-     * @ORM\ManyToOne(targetEntity="categorie", inversedBy="categorie")
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="categorie")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")
      * 
      */
