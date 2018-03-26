@@ -20,8 +20,8 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
 
 }
 
-require __DIR__.'/../vendor/autoload.php';
-Debug::enable();
+ require __DIR__.'/../vendor/autoload.php';
+ Debug::enable();
 
 $kernel = new AppKernel('dev', true);
 if (PHP_VERSION_ID < 70000) {
