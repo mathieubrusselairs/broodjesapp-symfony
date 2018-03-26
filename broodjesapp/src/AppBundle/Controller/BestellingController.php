@@ -7,6 +7,7 @@ use AppBundle\Entity\Soep;
 use AppBundle\Entity\Supplement;
 use AppBundle\Entity\Brood;
 use AppBundle\Entity\Beleg;
+use AppBundle\Service\BestellingService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
