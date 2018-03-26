@@ -15,8 +15,13 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
     || !(in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'], true) || PHP_SAPI === 'cli-server')
 ) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     //header('HTTP/1.0 403 Forbidden');
     //exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
+=======
+    #    header('HTTP/1.0 403 Forbidden');
+    #    exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
+>>>>>>> cc942f681134992e7e3cac6a3813e2e2a3fdd7de
 =======
 <<<<<<< HEAD
    # header('HTTP/1.0 403 Forbidden');
