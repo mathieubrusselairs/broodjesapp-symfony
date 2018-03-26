@@ -2,12 +2,12 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Entity\Broodje;
+use AppBundle\Entity\Bestelling;
 use AppBundle\Service\Exception\ConnectivityException;
 use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManagerInterface;
 
-class BroodjesService
+class BestellingService
 {
     private $entityManager;
 
@@ -33,15 +33,15 @@ class BroodjesService
         return $this->repository->findBy([], [], 5, 0);
     }
 
-    public function persist(Broodje $broodje)
+    public function persist(Bestelling $bestelling)
     {
-        $this->entityManager->persist($broodje);
+        $this->entityManager->persist($bestelling);
         $this->entityManager->flush();
     }
 
-    public function remove(Broodje $broodje)
+    public function remove(Bestelling $bestelling)
     {
-        $this->entityManager->remove($broodje);
+        $this->entityManager->remove($bestelling);
         $this->entityManager->flush();
     }
 }
