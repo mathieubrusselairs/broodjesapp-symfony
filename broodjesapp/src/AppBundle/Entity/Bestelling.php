@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Form\BestellingType;
 
 /**
  * Bestelling
@@ -20,6 +21,16 @@ class Bestelling
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+     /**
+     * @var User
+     * 
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="user")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
+     * 
+     */
+    private $user;
+
 
     /**
      * @var int

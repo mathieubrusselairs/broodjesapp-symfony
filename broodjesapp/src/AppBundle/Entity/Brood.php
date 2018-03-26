@@ -20,6 +20,32 @@ class Brood
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    /**
+    * @var Brood
+    * 
+    * @ORM\ManyToOne(targetEntity="Beleg", inversedBy="beleg")
+    * @ORM\JoinColumn(name="beleg_id", referencedColumnName="id", onDelete="CASCADE")
+    */
+    #Todo: making set and get of beleg
+    private $beleg;
+
+     /**
+     * @var Supplement[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Supplement", cascade={"persist"})
+     * @ORM\JoinTable(name="broodje_supplement")
+     * 
+     */
+    private $supplementen;
+
+    /**
+     * @var Bestelling[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Bestelling", cascade={"persist"})
+     * @ORM\JoinTable(name="bestelling_broodje")
+     * 
+     */
+    private $bestellingen;
 
     /**
      * @var bool

@@ -22,6 +22,21 @@ class Beleg
     private $id;
 
     /**
+     * @var Beleg[]
+     * 
+     * @ORM\OneToMany(targetEntity="Brood", mappedBy="brood")
+     */
+    private $brood;
+
+     /**
+     * 
+     * @ORM\ManyToOne(targetEntity="categorie", inversedBy="categorie")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")
+     * 
+     */
+    private $categorie;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="prijsKlein", type="decimal", precision=10, scale=2)
