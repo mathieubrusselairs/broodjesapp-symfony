@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        {% for bestelling in bestellingen %}
+            <div class="col-sm-6">
+                <div class="row">
+                    <h3>Soep</h3>
+                    <div class="col-sm-12">{{ bestelling.soep }}</div>
+                    <div class="col-sm-12">{{ bestelling.soepbroodwit }}</div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <h3>Broodjes</h3>
+                    <div class="col-sm-12">{{ bestelling.isgroot }}</div>
+                    <div class="col-sm-12">{{ bestelling.iswit }}</div>
+                    <div class="col-sm-12">{{ bestelling.opmerking }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
