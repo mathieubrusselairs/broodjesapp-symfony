@@ -21,6 +21,14 @@ class User
      */
     private $id;
 
+     /**
+      * @var Bestelling[]
+      *
+      * @ORM\OneToMany(targetEntity="Bestelling", mappedBy="bestelling")
+      */
+      private $bestelling;
+
+
     /**
      * @var string
      *
