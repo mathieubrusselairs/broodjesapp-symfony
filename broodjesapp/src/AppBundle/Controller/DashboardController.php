@@ -9,6 +9,7 @@ use AppBundle\Entity\Brood;
 use AppBundle\Entity\Beleg;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 
 class DashboardController extends Controller
