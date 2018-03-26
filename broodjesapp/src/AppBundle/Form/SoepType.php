@@ -30,8 +30,4 @@ class SoepType extends AbstractType
     {
         return 'appbundle_soepvdag';
     }
-
-
-
-
 }
