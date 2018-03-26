@@ -5,7 +5,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BestellingType extends AbstractType
+class SoepvdagType extends AbstractType
 {
     /**
      * {@inheritdoc}
