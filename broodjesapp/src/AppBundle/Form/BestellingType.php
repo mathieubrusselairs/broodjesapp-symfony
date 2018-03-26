@@ -13,14 +13,14 @@ class BestellingType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('beleg')->add('isWit')->add('isGroot')->add('beleg')->add('aantal')->add('opmerking');
+        $builder->add('beleg')->add('isWit')->add('isGroot')->add('aantal')->add('opmerking');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Brood'
+            'data_class' => 'AppBundle\Entity\Bestelling'
         ));
     }
 
@@ -29,7 +29,7 @@ class BestellingType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_brood';
+        return 'appbundle_bestelling';
     }
 
 
