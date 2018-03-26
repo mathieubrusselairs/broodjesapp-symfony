@@ -20,7 +20,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/broodje", name="form")
+     * @Route("/broodje", name="broodje")
      */
     public function formAction(Request $request)
     {
