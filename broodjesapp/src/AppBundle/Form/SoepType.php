@@ -5,7 +5,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SoepvdagType extends AbstractType
+class SoepType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -30,8 +30,4 @@ class SoepvdagType extends AbstractType
     {
         return 'appbundle_soepvdag';
     }
-
-
-
-
 }
