@@ -22,6 +22,16 @@ class Bestelling
      */
     private $id;
 
+     /**
+     * @var User
+     * 
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="user")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
+     * 
+     */
+    private $user;
+
+
     /**
      * @var int
      *
