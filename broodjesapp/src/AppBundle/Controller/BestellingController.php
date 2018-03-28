@@ -13,16 +13,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Bestelling Controller
+ * @Route("bestelling")
+ */
+
 class BestellingController extends Controller
 {
+    private $bestellingService;
+
+    public function __construct(BestellingService $bestellingService)
+    {
+        $this->bestellingService = $bestellingService;
+    }
+
     /**
      * @Route("/bestelling", name="bestelling_index")
+     * @Method('GET')
+     *
      */
     public function indexAction()
     {
         $today = date('N');
         
-        $em = $this->getDoctrine()->getManager();
+        $bestellingen = $this->bestellingService->fetchAllBestellingen();
+
         $beleg = $em->getRepository('AppBundle:Beleg')->findAll();
         $soepvdag = $em->getRepository('AppBundle:Soep')->findBy(['id' => $today]);
         $bestellingen = array();
@@ -50,7 +65,7 @@ class BestellingController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->BestellingService->persist($bestelling);
 
-            return $this->redirectToRoute('/');
+            return $this->redirectToRoute('bestelling_show', array('id' => $bestelling->getId()));
         }
 
         return $this->render('bestelling/new.html.twig', array(
@@ -72,11 +87,11 @@ class BestellingController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->blogpostService->persist($bestelling);
 
-            return $this->redirectToRoute('bestelling_edit', array('id' => $bestelling->getId()));
+            return $this->redirectToRoute('bestelling_index');
         }
-
+        //blijf af van render dit doet kevster
         return $this->render('bestelling/edit.html.twig', array(
             'bestelling' => $bestelling,
             'edit_form' => $editForm->createView(),
@@ -96,9 +111,7 @@ class BestellingController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($bestelling);
-            $em->flush();
+            $this->bestellingService->remove($bestelling);
         }
 
         return $this->redirectToRoute('bestelling_index');
