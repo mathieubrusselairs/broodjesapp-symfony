@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Bestelling Controller
- * @Route("bestelling")
+ * @Route("/bestelling")
  */
 
 class BestellingController extends Controller
@@ -28,8 +28,8 @@ class BestellingController extends Controller
     }
 
     /**
-     * @Route("/bestelling", name="bestelling_index")
-     * @Method('GET')
+     * @Route("/", name="bestelling_index")
+     * @Method("GET")
      *
      */
     public function indexAction()
