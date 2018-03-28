@@ -3,6 +3,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Bestelling;
+use AppBundle\Entity\Brood;
 use AppBundle\Service\Exception\ConnectivityException;
 use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,7 +17,7 @@ class BestellingService
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->repository = $entityManager->getRepository('AppBundle:Broodje');
+        $this->repository = $entityManager->getRepository('AppBundle:Brood');
     }
 
     public function fetchAll()

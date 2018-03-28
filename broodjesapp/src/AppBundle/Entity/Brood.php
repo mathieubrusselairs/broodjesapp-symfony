@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Beleg;
 
 /**
  * Brood
@@ -20,13 +21,13 @@ class Brood
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
     /**
-    * @var Brood
+    * @var Beleg
     * 
     * @ORM\ManyToOne(targetEntity="Beleg", inversedBy="beleg")
     * @ORM\JoinColumn(name="beleg_id", referencedColumnName="id", onDelete="CASCADE")
     */
-    #Todo: making set and get of beleg
     private $beleg;
 
      /**
@@ -39,9 +40,9 @@ class Brood
     private $supplementen;
 
     /**
-     * @var Bestelling[]|ArrayCollection
+     * @var Bestelling
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Bestelling", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bestelling", cascade={"persist"})
      * @ORM\JoinTable(name="bestelling_broodje")
      * 
      */
@@ -68,7 +69,6 @@ class Brood
      */
     private $opmerking;
 
-
     /**
      * Get id
      *
@@ -92,6 +92,7 @@ class Brood
 
         return $this;
     }
+
 
     /**
      * Get isGroot
@@ -150,5 +151,33 @@ class Brood
     {
         return $this->opmerking;
     }
+
+    /**
+     * Set beleg
+     *
+     * @param Beleg $beleg
+     *
+     * @return Brood
+     */
+    public function setBeleg(Beleg $beleg)
+    {
+        $this->beleg = $beleg;
+
+        return $this;
+    }
+
+    /**
+     * get beleg
+     *
+     * @param Beleg $beleg
+     *
+     * @return Beleg
+     */
+    public function getBeleg()
+    {
+
+        return $this->beleg;
+    }
+    
 }
 

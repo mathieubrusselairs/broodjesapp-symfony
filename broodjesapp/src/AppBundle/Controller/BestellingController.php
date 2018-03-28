@@ -15,6 +15,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BestellingController extends Controller
 {
+
+    private $bestelling;
+
+    public function __construct(BestellingService $bestellingService)
+    {
+
+        $this->bestellingService = $bestellingService;
+    }
     /**
      * @Route("/", name="bestelling_index")
      */
@@ -40,9 +48,11 @@ class BestellingController extends Controller
      * @Route("/new", name="bestelling_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
-        $bestelling = new Bestelling();
+        $beleg = new Beleg();
+        $brood = new Brood($beleg);
+        $bestelling = new Bestelling($brood);
         
         $form = $this->createForm('AppBundle\Form\BestellingType', $bestelling);
         $form->handleRequest($request);

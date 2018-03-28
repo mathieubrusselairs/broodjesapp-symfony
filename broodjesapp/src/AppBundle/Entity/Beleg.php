@@ -170,5 +170,10 @@ class Beleg
     {
         return $this->omschrijving;
     }
+
+    public function __construct()
+    {
+        
+    }
 }
 

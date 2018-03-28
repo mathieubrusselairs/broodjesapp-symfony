@@ -3,7 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\Brood;
 use AppBundle\Form\BestellingType;
+
+/**
+ * 
+ * TODO // REMOVE ALL BELEG FROM BESTELLING AND ADD IN BROOD
+ * 
+ */
+
 
 /**
  * Bestelling
@@ -60,6 +69,18 @@ class Bestelling
      */
     private $soepbroodWit;
 
+
+    /**
+     * @var Brood[]|ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Brood", mappedBy="bestelling")
+     */
+    private $brood;
+
+    public function __construct(Brood $brood)
+    {
+
+    }
 
     /**
      * Get id
@@ -156,7 +177,6 @@ class Bestelling
 
         return $this;
     }
-
     /**
      * Get soepbroodWit
      *
@@ -165,6 +185,23 @@ class Bestelling
     public function getSoepbroodWit()
     {
         return $this->soepbroodWit;
+    }
+
+    public function addBrood(Brood $brood)
+    {
+        if(!$this->brood->contains($brood)) {
+            $this->brood->add($brood);
+        }
+    }
+
+    public function removeBrood(Brood $brood)
+    {
+        $this->brood->removeElement($brood);
+    }
+
+    public function getBrood()
+    {
+        return $this->brood;
     }
 }
 
