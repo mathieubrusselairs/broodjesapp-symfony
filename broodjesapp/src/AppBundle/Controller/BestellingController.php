@@ -7,6 +7,8 @@ use AppBundle\Entity\Soep;
 use AppBundle\Entity\Supplement;
 use AppBundle\Entity\Brood;
 use AppBundle\Entity\Beleg;
+use AppBundle\Service\SoepService;
+use AppBundle\Service\BelegService;
 use AppBundle\Service\BestellingService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -15,21 +17,25 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Bestelling Controller
- * @Route("bestelling")
+ * @Route("/bestelling")
  */
 
 class BestellingController extends Controller
 {
     private $bestellingService;
+    private $soepService;
+    private $belegService;
 
-    public function __construct(BestellingService $bestellingService)
+    public function __construct(BestellingService $bestellingService, SoepService $soepService, BelegService $belegService)
     {
         $this->bestellingService = $bestellingService;
+        $this->soepService = $soepService;
+        $this->belegService = $belegService;
     }
 
     /**
-     * @Route("/bestelling", name="bestelling_index")
-     * @Method('GET')
+     * @Route("/", name="bestelling_index")
+     * @Method("GET")
      *
      */
     public function indexAction()
@@ -38,9 +44,21 @@ class BestellingController extends Controller
         
         $bestellingen = $this->bestellingService->fetchAllBestellingen();
 
-        $beleg = $em->getRepository('AppBundle:Beleg')->findAll();
-        $soepvdag = $em->getRepository('AppBundle:Soep')->findBy(['id' => $today]);
-        $bestellingen = array();
+        $beleg = $this->belegService->findAllBeleg();
+        $soepRow = $this->soepService->fetchSoepVanDeDag($today);
+
+        
+        if(empty($soepRow))
+        {
+            $soepvdag = 'nog geen soepen in database';
+        }
+        else{
+
+            $soepvdag = $soepRow['soep'];
+        }
+        
+
+        
         
         return $this->render('bestelling/index.html.twig', [
             'bestellingen' => $bestellingen,
@@ -52,7 +70,7 @@ class BestellingController extends Controller
     /**
      * Creates a new Bestelling entity.
      *
-     * @Route("/new_bestelling", name="bestelling_new")
+     * @Route("/new", name="bestelling_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
