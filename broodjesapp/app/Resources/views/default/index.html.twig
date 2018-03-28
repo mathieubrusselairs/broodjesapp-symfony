@@ -3,16 +3,29 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <img class="d-block mx-auto mb-4" src="https://www.talent-it.be/wp-content/uploads/2017/08/logo-talent-it-orange-2.png" alt="" width="200" height="45">
-            <div id="welcome">
-                <h1>Broodjes met Talent!!</h1>
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img class="d-block mx-auto mb-4" src="https://www.talent-it.be/wp-content/uploads/2017/08/logo-talent-it-orange-2.png" alt="" width="200" height="45">
+                        </div>
+                        <div class="col-sm-12 text-center" id="welcome">
+                            <h1>Broodjes met Talent!!</h1>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            {% if bestelling %}
-                {% include('bestelling/index.html.twig') %}
-            {% else %}
-                {% include('bestelling/new.html.twig') %}
-            {% endif %}
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <h4>Bestelling overview</h4>
+                    <a href="{{ path('bestelling_index') }}"><button class="btn btn-warning">Overview</button></a>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <h4>Nieuwe bestelling</h4>
+                    <a href="{{ path('bestelling_new') }}"><button class="btn btn-warning">Nieuwe bestelling</button></a>
+                </div>
+            </div>
 
         </div>
     </div>
