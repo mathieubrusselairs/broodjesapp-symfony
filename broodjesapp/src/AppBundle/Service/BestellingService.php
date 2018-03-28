@@ -11,13 +11,12 @@ use Doctrine\ORM\EntityManagerInterface;
 class BestellingService
 {
     private $entityManager;
-
     private $repository;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->entityManager = $entityManager;
         $this->repository = $entityManager->getRepository('AppBundle:Brood');
+        $this->entityManager = $entityManager;
     }
 
     public function fetchAll()
@@ -29,9 +28,9 @@ class BestellingService
         }
     }
 
-    public function fetchRecentPosts()
+    public function fetchAllBestellingen()
     {
-        return $this->repository->findBy([], [], 5, 0);
+        return $this->repository->findAll();
     }
 
     public function persist(Bestelling $bestelling)

@@ -46,9 +46,9 @@ class DashboardController extends Controller
             return $this->redirectToRoute('dashboard_index', array('id' => $bestelling->getId()));
         }
 
-        return $this->render('dashboard/edit.html.twig', array(
+        return $this->render('dashboard/edit_soep.html.twig', array(
             'soep' => $soep,
-            'edit_form' => $editForm->createView(),
+            'edit_soep_form' => $editForm->createView(),
         ));    
     }
 }
