@@ -15,22 +15,14 @@ class BestellingService
 
     public function __construct(EntityManagerInterface $entityManager)
     {
+        $this->repository = $entityManager->getRepository('AppBundle:Brood');
         $this->entityManager = $entityManager;
-        $this->repository = $entityManager->getRepository('AppBundle:Broodje');
+        
     }
 
-    public function fetchAll()
+    public function fetchAllBestellingen()
     {
-        try {
-            return $this->repository->findAll();
-        } catch (DBALException $DBALException) {
-            throw new ConnectivityException($DBALException->getMessage());
-        }
-    }
-
-    public function fetchRecentPosts()
-    {
-        return $this->repository->findBy([], [], 5, 0);
+        return $this->repository->findAll();
     }
 
     public function persist(Bestelling $bestelling)
