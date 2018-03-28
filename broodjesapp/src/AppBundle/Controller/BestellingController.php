@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 class BestellingController extends Controller
 {
     /**
-     * @Route("/", name="bestelling_index")
+     * @Route("/bestelling", name="bestelling_index")
      */
     public function indexAction()
     {
@@ -37,10 +37,10 @@ class BestellingController extends Controller
     /**
      * Creates a new Bestelling entity.
      *
-     * @Route("/new", name="bestelling_new")
+     * @Route("/new_bestelling", name="bestelling_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $bestelling = new Bestelling();
         
