@@ -19,7 +19,7 @@ class BestellingType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('soep')->add('soepbroodWit');
+        $builder->add('soep')->add('soepbroodWit')->add('brood');
     }
     
     /**
@@ -28,7 +28,7 @@ class BestellingType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Bestelling'
+            'data_class' => 'AppBundle\Entity\Bestelling',
         ));
     }
 

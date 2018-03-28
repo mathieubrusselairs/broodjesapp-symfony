@@ -171,7 +171,7 @@ class Brood
      *
      * @param Beleg $beleg
      *
-     * @return Beleg
+     * @return Beleg $beleg
      */
     public function getBeleg()
     {

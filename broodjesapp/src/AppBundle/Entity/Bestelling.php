@@ -187,6 +187,8 @@ class Bestelling
         return $this->soepbroodWit;
     }
 
+
+
     public function addBrood(Brood $brood)
     {
         if(!$this->brood->contains($brood)) {
@@ -198,6 +200,12 @@ class Bestelling
     {
         $this->brood->removeElement($brood);
     }
+
+    /**
+     * Get soepbroodWit
+     *
+     * @return Brood
+     */
 
     public function getBrood()
     {

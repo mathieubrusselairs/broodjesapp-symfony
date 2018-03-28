@@ -82,6 +82,8 @@ class BestellingController extends Controller
         $form = $this->createForm('AppBundle\Form\BestellingType', $bestelling);
         $form->handleRequest($request);
         
+        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $this->BestellingService->persist($bestelling);
 

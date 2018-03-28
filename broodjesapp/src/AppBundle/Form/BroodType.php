@@ -19,7 +19,9 @@ class BroodType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('beleg')->add('opmerking');
+        $builder->add('brood', BroodType::class, array(
+            'data_class' => Brood::class,
+        ));
     }
     
     /**
@@ -39,8 +41,4 @@ class BroodType extends AbstractType
     {
         return 'appbundle_brood';
     }
-
-
-
-
 }
